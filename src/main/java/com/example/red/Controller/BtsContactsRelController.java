@@ -1,5 +1,6 @@
 package com.example.red.Controller;
 
+import java.util.List;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
@@ -8,23 +9,21 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.example.red.Model.Route;
-import com.example.red.Service.RouteService;
-
+import com.example.red.Service.BtsContactsRelService;
 import lombok.RequiredArgsConstructor;
 
 @CrossOrigin(origins="http://localhost:5173/")
 @RestController
 @RequiredArgsConstructor
 @RequestMapping("/api/v1")
-public class RouteController {
+public class BtsContactsRelController {
 
-	private final RouteService routeService;
+	private final BtsContactsRelService btsContactsRelService;
 	
-	@GetMapping("/routes")
-	public ResponseEntity<Route> getRouteByBtsNumber(@RequestParam(required=false) int btsNumber){
+	@GetMapping("/btscontactsrel")
+	public ResponseEntity<List<Integer>> getBtsContactsIdByBsNumber(@RequestParam(required=false) int btsNumber){
 	
-		try { return new ResponseEntity<>(routeService.getRouteByBtsNumber(btsNumber),HttpStatus.OK);
+		try {return new ResponseEntity<>(btsContactsRelService.getBtsContactsIdByBtsNumber(btsNumber),HttpStatus.OK);
 		} catch (Exception ex) {return new ResponseEntity<>(HttpStatus.NOT_FOUND);}
 	}
 }
