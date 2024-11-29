@@ -28,7 +28,7 @@ public class Route {
 	private String ams_info;
 	private int ams_height;
 	private int id_ams_type;
-	private int id_key_type;
+	private int id_key_type;//Это поле устарело, данные из него брать не надо. Только через "about_bts_keys_rel".
 	private int id_side;
 	private int id_site;
 	private int old_id;
