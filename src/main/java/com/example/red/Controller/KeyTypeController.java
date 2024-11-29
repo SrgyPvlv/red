@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.example.red.Model.KeyType;
@@ -26,7 +27,7 @@ private final KeyTypeService keyTypeService;
 private final AboutBtsKeysRelService aboutBtsKeysRelService;
 	
 	@GetMapping("/keytypes")
-	public ResponseEntity<List<KeyType>> getKeyTypesByAboutBtsId(@PathVariable int btsId){
+	public ResponseEntity<List<KeyType>> getKeyTypesByAboutBtsId(@RequestParam(required=false) int btsId){
 	
 		try { List<Integer> keysId = aboutBtsKeysRelService.getKeyIdByAboutBtsId(btsId);
 		
